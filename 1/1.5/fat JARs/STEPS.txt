@@ -1,0 +1,68 @@
+
+Створи Maven-проєкт:
+mvn archetype:generate -DgroupId=com.example -DartifactId=executable-jar -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+Додай плагін у pom.xml для створення виконуваного JAR:
+<properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+</properties>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.2.0</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>com.example.Main</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+   
+
+   <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.example.App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                 <executions>
+                <execution>
+                    <id>make-assembly</id> <!-- Будь-який унікальний ID -->
+                    <phase>package</phase> <!-- Створюється на етапі пакування -->
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
+            </executions>
+    </plugin>
+ </plugins>
+</build>
+
+Додай залежності:
+ <dependency>
+            <groupId>com.github.cliftonlabs</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>4.0.1</version>
+</dependency>
+
+Збери JAR за допомогою Maven:
+mvn package
+ або
+mvn clean package
+
+
+Запусти програму:
+java -jar target/executable-jar-1.0-SNAPSHOT-jar-with-dependencies.jar
+

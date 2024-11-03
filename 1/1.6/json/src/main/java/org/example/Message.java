@@ -1,0 +1,31 @@
+package org.example;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * A class that generates messages for saving to a file
+ */
+public class Message {
+
+    @JsonProperty("message")
+    private String text;
+
+    public Message (String text){
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "text='" + text + '\'' +
+                '}';
+    }
+}

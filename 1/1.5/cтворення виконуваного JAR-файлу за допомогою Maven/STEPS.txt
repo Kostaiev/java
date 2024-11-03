@@ -1,0 +1,30 @@
+
+Створи Maven-проєкт:
+mvn archetype:generate -DgroupId=com.example -DartifactId=executable-jar -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+Додай плагін у pom.xml для створення виконуваного JAR:
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.2.0</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>com.example.Main</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+Збери JAR за допомогою Maven:
+mvn package
+
+Запусти програму:
+java -jar target/executable-jar-1.0-SNAPSHOT.
+jar
+
+
