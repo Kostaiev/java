@@ -1,0 +1,4 @@
+java -Dformat="json" -jar target/json-1.0-SNAPSHOT.jar ../file.properties
+
+
+

@@ -9,7 +9,7 @@ To create a jar file, run the following commands:
 mvn package
 
 2.Run the jar file with libraries
-java -jar target/json-1.0-SNAPSHOT-jar-with-dependencies.jar "parametr argr"
+java -jar target/original-json-1.0-SNAPSHOT.jar
 
 3.To rebuild the project
 mvn clean package
